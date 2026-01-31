@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8"><title>Tools MC | Accueil</title>
+    <meta charset="UTF-8">
+    <title>Tools MC | Accueil</title>
     <link rel="stylesheet" href="/mctools/style.css">
 </head>
 <body>
@@ -10,20 +11,20 @@
         <ul>
             <li><a href="/mctools/mods">Mods</a></li>
             <li><a href="/mctools/plugins">Plugins</a></li>
-            <li><button onclick="toggleFavs()" class="btn-nav">⭐ <span id="fav-count">0</span></button></li>
         </ul>
     </nav>
+
     <header class="hero">
         <h1>L'Arsenal <span class="highlight">Minecraft</span></h1>
-        <p>Recherche optimisée et téléchargement CDN.</p>
+        <p>Gestionnaire de ressources pour serveurs et clients.</p>
         <div style="margin-top:30px">
-            <a href="/mctools/mods" class="btn-search" style="text-decoration:none; padding:15px 30px">Catalogue Mods</a>
-            <a href="/mctools/plugins" class="btn-search" style="text-decoration:none; padding:15px 30px; background:#30363d; color:white">Catalogue Plugins</a>
+            <a href="/mctools/mods" class="btn-link">Explorer les Mods</a>
+            <a href="/mctools/plugins" class="btn-link secondary">Explorer les Plugins</a>
         </div>
     </header>
-    <main>
-        <section id="favorites-section" class="hidden"><div id="favorites-container" class="grid"></div></section>
-    </main>
-    <script src="/mctools/script.js"></script>
+
+    <footer>
+        <p>Powered by Modrinth & Hangar APIs</p>
+    </footer>
 </body>
 </html>
