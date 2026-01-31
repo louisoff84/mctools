@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tools MC | L'Arsenal Minecraft</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">Tools <span>MC</span></div>
+        <div class="nav-actions">
+            <button onclick="toggleFavorites()" class="btn-fav-toggle">
+                ⭐ Favoris (<span id="fav-count">0</span>)
+            </button>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Optimisez votre serveur <span class="highlight">Minecraft</span></h1>
+        <p>Recherchez, sauvegardez et gérez vos ressources parmi les sources les plus fiables.</p>
+        <div class="hero-badges">
+            <span>🛡️ Sécurisé</span>
+            <span>🚀 Rapide</span>
+            <span>💎 Sans pubs</span>
+        </div>
+    </header>
+
+    <main>
+        <section id="favorites-section" class="hidden">
+            <div class="section-header">
+                <h2>Mes Favoris</h2>
+                <button onclick="toggleFavorites()" class="btn-close">Masquer</button>
+            </div>
+            <div id="favorites-container" class="grid"></div>
+        </section>
+
+        <section class="search-area">
+            <div class="search-box">
+                <select id="platform-select">
+                    <option value="modrinth">Modrinth</option>
+                    <option value="hangar">Hangar (Paper)</option>
+                </select>
+                <input type="text" id="search-input" placeholder="Sodium, Essentials, WorldEdit...">
+                <button onclick="unifiedSearch()" class="btn-search">Chercher</button>
+            </div>
+        </section>
+
+        <section id="results-area">
+            <div id="results-container" class="grid"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Powered by <a href="https://modrinth.com" target="_blank">Modrinth</a> & <a href="https://hangar.papermc.io" target="_blank">Hangar</a></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
