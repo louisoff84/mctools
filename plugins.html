@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Tools MC | Plugins</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <a href="/" class="logo">Tools <span>MC</span></a>
+        <ul>
+            <li><a href="/mods">Mods</a></li>
+            <li><a href="/plugins">Plugins</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <h1>Catalogue de <span class="highlight">Plugins</span></h1>
+        <p>Boostez votre serveur avec les meilleurs plugins.</p>
+    </header>
+
+    <div class="search-area">
+        <div class="search-box">
+            <input type="text" id="search-input" placeholder="LuckPerms, Essentials, WorldEdit...">
+            <button onclick="searchAPI('plugin')" class="btn-search">Chercher</button>
+        </div>
+    </div>
+
+    <div id="results-container" class="grid"></div>
+
+    <footer>
+        Powered by <a href="https://modrinth.com" target="_blank">Modrinth</a>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
