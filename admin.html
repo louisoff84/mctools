@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | Tools MC</title>
+    <link rel="stylesheet" href="/mctools/style.css">
+    <style>
+        /* Styles spécifiques à la page admin */
+        .admin-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 20px; padding: 20px; }
+        .stats-card { background: var(--card); border: 1px solid var(--border); padding: 20px; border-radius: 12px; }
+        .theme-manager { background: var(--card); border: 1px solid var(--border); padding: 20px; border-radius: 12px; }
+        .theme-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; margin-top: 15px; }
+        .btn-admin-theme { 
+            padding: 10px; border-radius: 8px; border: 1px solid var(--border); 
+            background: var(--bg); color: var(--text); cursor: pointer; transition: 0.2s;
+        }
+        .btn-admin-theme:hover { border-color: var(--accent); transform: scale(1.05); }
+        .status-online { color: var(--accent); font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div id="progress-container"><div id="progress-bar"></div></div>
+
+    <nav>
+        <a href="/mctools/" class="logo">Admin<span>Panel</span></a>
+        <a href="/mctools/" class="btn-action">Retour au Site</a>
+    </nav>
+
+    <main class="admin-grid">
+        <aside class="stats-card">
+            <h3>📊 GitHub Repo Stats</h3>
+            <hr style="margin: 15px 0; border: 0; border-top: 1px solid var(--border);">
+            <div id="github-info">
+                <p>Status: <span class="status-online" id="repo-status">Checking...</span></p>
+                <p>Stars: <span id="repo-stars">-</span> ⭐</p>
+                <p>Forks: <span id="repo-forks">-</span> 🍴</p>
+                <p>Dernier Push: <span id="repo-last-push">-</span></p>
+            </div>
+            <button onclick="refreshRepoData()" class="btn-main" style="margin-top: 20px; width: 100%;">🔄 Actualiser</button>
+        </aside>
+
+        <section class="theme-manager">
+            <h3>🎨 Sélecteur de Thème (20 Thèmes)</h3>
+            <p style="color: var(--text-dim); font-size: 0.9rem;">Cliquez pour appliquer instantanément sur tout le site.</p>
+            <div id="admin-theme-list" class="theme-list">
+                </div>
+        </section>
+    </main>
+
+    <script src="/mctools/admin-logic.js"></script>
+</body>
+</html>
