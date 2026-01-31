@@ -1,49 +1,23 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Admin Tools MC</title>
-    <link rel="stylesheet" href="/mctools/style.css">
-</head>
-<body class="admin-page">
-    <div id="progress-container"><div id="progress-bar"></div></div>
-    
-    <nav>
-        <a href="/mctools/" class="logo">Admin<span>Panel</span></a>
-    </nav>
-
-    <div class="admin-grid">
-        <section class="stats-card">
-            <h3>GitHub Info</h3>
-            <p id="repo-data">Chargement des données du repo...</p>
-        </section>
-
-        <section class="theme-manager">
-            <h3>Choisir un Thème</h3>
-            <div id="theme-list" class="theme-list"></div>
-        </section>
+<aside class="stats-card">
+    <h3>📡 État du Déploiement</h3>
+    <div id="sync-status" style="margin: 10px 0; padding: 10px; border-radius: 8px; background: rgba(0,0,0,0.2);">
+        <p>Repo: <span id="github-repo-name">louisoff84/mctools</span></p>
+        <p>Dernière Sync Style: <span id="last-sync-time">Jamais</span></p>
+        <p>État API: <span id="api-indicator">🔴 Déconnecté</span></p>
     </div>
+    <button onclick="refreshAdminSync()" class="btn-main" style="width: 100%;">Forcer la Sync GitHub</button>
+</aside>
 
-    <script src="/mctools/script-global.js"></script>
-    <script>
-        // Logique spécifique à la page admin pour générer les boutons
-        const list = document.getElementById('theme-list');
-        Object.keys(themes).forEach(name => {
-            const btn = document.createElement('button');
-            btn.className = "btn-action";
-            btn.style.borderColor = themes[name].accent;
-            btn.innerText = name;
-            btn.onclick = () => applyTheme(name);
-            list.appendChild(btn);
-        });
-
-        // Charger les vraies stats GitHub
-        fetch(GITHUB_API).then(res => res.json()).then(data => {
-            document.getElementById('repo-data').innerHTML = `
-                Stars: ${data.stargazers_count} ⭐<br>
-                Forks: ${data.forks_count} 🍴
-            `;
-        });
-    </script>
-</body>
-</html>
+<script>
+    async function refreshAdminSync() {
+        const current = localStorage.getItem('active_theme') || 'Default';
+        const data = await syncAndApplyTheme(current);
+        if (data) {
+            document.getElementById('api-indicator').innerText = "🟢 Connecté (Synchro)";
+            document.getElementById('api-indicator').style.color = "var(--accent)";
+            document.getElementById('last-sync-time').innerText = new Date(data.pushed_at).toLocaleString();
+        }
+    }
+    // Lancer au démarrage de l'admin
+    window.onload = refreshAdminSync;
+</script>
