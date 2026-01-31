@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tools MC | Accueil</title>
+    <meta charset="UTF-8"><title>Tools MC | Accueil</title>
     <link rel="stylesheet" href="/mctools/style.css">
 </head>
 <body>
@@ -12,46 +10,20 @@
         <ul>
             <li><a href="/mctools/mods">Mods</a></li>
             <li><a href="/mctools/plugins">Plugins</a></li>
-            <li><button onclick="toggleFavs()" class="btn-nav">⭐ Favoris</button></li>
+            <li><button onclick="toggleFavs()" class="btn-nav">⭐ <span id="fav-count">0</span></button></li>
         </ul>
     </nav>
-
     <header class="hero">
-        <h1>L'Arsenal du Serveur <span class="highlight">Minecraft</span></h1>
-        <p>Gérez vos ressources avec efficacité. Recherche instantanée, copie d'ID et téléchargement direct.</p>
-        <div class="hero-actions">
-            <a href="/mctools/mods" class="btn-main">Explorer les Mods</a>
-            <a href="/mctools/plugins" class="btn-main secondary">Explorer les Plugins</a>
+        <h1>L'Arsenal <span class="highlight">Minecraft</span></h1>
+        <p>Recherche optimisée et téléchargement CDN.</p>
+        <div style="margin-top:30px">
+            <a href="/mctools/mods" class="btn-search" style="text-decoration:none; padding:15px 30px">Catalogue Mods</a>
+            <a href="/mctools/plugins" class="btn-search" style="text-decoration:none; padding:15px 30px; background:#30363d; color:white">Catalogue Plugins</a>
         </div>
     </header>
-
-    <main id="app">
-        <section id="favorites-section" class="hidden">
-            <h2 style="text-align:center; margin-bottom:20px;">Mes Favoris</h2>
-            <div id="favorites-container" class="grid"></div>
-            <hr class="separator">
-        </section>
-        
-        <section class="presentation-grid">
-            <div class="card">
-                <h3>🚀 Haute Performance</h3>
-                <p>Interface légère connectée directement aux APIs les plus fiables du marché.</p>
-            </div>
-            <div class="card">
-                <h3>🆔 Gestion d'ID</h3>
-                <p>Copiez les identifiants de projets pour vos installations via CLI en un clic.</p>
-            </div>
-            <div class="card">
-                <h3>⭐ Sauvegarde Locale</h3>
-                <p>Gardez une trace de vos plugins et mods préférés sans compte utilisateur.</p>
-            </div>
-        </section>
+    <main>
+        <section id="favorites-section" class="hidden"><div id="favorites-container" class="grid"></div></section>
     </main>
-
-    <footer>
-        <p>Powered by <a href="https://modrinth.com" target="_blank">Modrinth API</a> & <a href="https://hangar.papermc.io" target="_blank">Hangar API</a></p>
-    </footer>
-
     <script src="/mctools/script.js"></script>
 </body>
 </html>
