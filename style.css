@@ -1,25 +1,12 @@
-/* TOOLS MC - Master Stylesheet
-    Location: /mctools/style.css
-*/
-
 :root {
-    /* Palette de couleurs */
-    --bg-dark: #0d1117;
-    --bg-card: #161b22;
-    --bg-nav: rgba(13, 17, 23, 0.95);
+    --bg: #0d1117;
+    --card: #161b22;
     --accent: #00ff88;
-    --accent-glow: rgba(0, 255, 136, 0.15);
-    --text-main: #f0f6fc;
+    --text: #f0f6fc;
     --text-dim: #8b949e;
     --border: #30363d;
-    --error: #f85149;
-    
-    /* Transitions & Shadow */
-    --smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
 
-/* Reset & Base */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -27,287 +14,135 @@
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background-color: var(--bg-dark);
-    color: var(--text-main);
-    line-height: 1.6;
-    overflow-x: hidden;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    text-align: center; /* Centrage global par défaut */
 }
 
-/* Navigation */
+/* Navbar */
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 5%;
+    padding: 15px 5%;
     border-bottom: 1px solid var(--border);
-    background: var(--bg-nav);
-    backdrop-filter: blur(10px);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    background: var(--bg);
 }
 
 .logo {
-    font-size: 1.4rem;
-    font-weight: 800;
-    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
     text-decoration: none;
-    letter-spacing: -0.5px;
+    color: white;
 }
 
-.logo span {
-    color: var(--accent);
-}
+.logo span { color: var(--accent); }
 
 nav ul {
     display: flex;
     list-style: none;
-    gap: 1.5rem;
+    gap: 15px;
 }
 
 nav a {
-    color: var(--text-dim);
+    color: var(--text);
     text-decoration: none;
-    font-weight: 500;
-    font-size: 0.95rem;
-    transition: var(--smooth);
+    font-size: 0.9rem;
 }
 
-nav a:hover {
-    color: var(--accent);
-}
-
-/* Hero Section */
+/* Hero Section - C'est ici que ça buggait */
 .hero {
-    padding: 100px 20px 60px;
-    text-align: center;
-    background: radial-gradient(circle at top, var(--accent-glow) 0%, transparent 60%);
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Force le centrage des éléments flex */
 }
 
-.hero h1 {
-    font-size: clamp(2.5rem, 8vw, 4rem);
-    font-weight: 900;
-    margin-bottom: 1rem;
-    line-height: 1.1;
+.badge {
+    display: inline-block;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    margin-bottom: 10px;
 }
 
-.highlight {
-    color: var(--accent);
-    text-shadow: 0 0 20px var(--accent-glow);
+h1 {
+    font-size: 2.2rem;
+    margin: 10px 0 20px;
+    line-height: 1.2;
 }
+
+.highlight { color: var(--accent); }
 
 .hero p {
     color: var(--text-dim);
-    max-width: 600px;
-    margin: 0 auto 2.5rem;
-    font-size: 1.1rem;
+    max-width: 500px;
+    margin: 0 auto 30px;
 }
 
-/* Barre de recherche */
-.search-box {
-    max-width: 650px;
-    margin: 0 auto;
+/* Correction des boutons (Hero CTA) */
+.hero-cta {
     display: flex;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 6px;
-    transition: var(--smooth);
-}
-
-.search-box:focus-within {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px var(--accent-glow);
-}
-
-.search-box input {
-    flex: 1;
-    background: transparent;
-    border: none;
-    color: white;
-    padding: 12px 18px;
-    font-size: 1rem;
-    outline: none;
-}
-
-.btn-search {
-    background: var(--accent);
-    color: black;
-    border: none;
-    padding: 0 24px;
-    border-radius: 10px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: var(--smooth);
-}
-
-.btn-search:hover {
-    transform: scale(1.02);
-    filter: brightness(1.1);
-}
-
-/* Grille de résultats */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 24px;
-    padding: 40px 5%;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-/* Cartes */
-.card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    transition: var(--smooth);
-    position: relative;
-}
-
-.card:hover {
-    border-color: var(--accent);
-    transform: translateY(-5px);
-    box-shadow: var(--shadow);
-}
-
-.card img {
-    width: 60px;
-    height: 60px;
-    border-radius: 12px;
-    margin-bottom: 1.2rem;
-    object-fit: cover;
-}
-
-.card h3 {
-    font-size: 1.25rem;
-    margin-bottom: 0.8rem;
-}
-
-.card p {
-    font-size: 0.9rem;
-    color: var(--text-dim);
-    margin-bottom: 1.5rem;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-/* Actions de la carte */
-.card-actions {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 48px;
-    gap: 8px;
-    margin-top: auto;
-}
-
-.btn-action {
-    background: #21262d;
-    color: var(--text-main);
-    border: 1px solid var(--border);
-    padding: 10px 4px;
-    border-radius: 8px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    transition: var(--smooth);
-}
-
-.btn-action:hover {
-    background: var(--border);
-    border-color: var(--text-dim);
-}
-
-.dl-btn {
-    background: var(--accent-glow);
-    color: var(--accent);
-    border-color: rgba(0, 255, 136, 0.3);
-}
-
-.dl-btn:hover {
-    background: var(--accent);
-    color: black;
-    border-color: var(--accent);
-}
-
-/* Modale de téléchargement */
-.modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(8px);
-    display: flex;
-    align-items: center;
+    flex-wrap: wrap; /* Pour que ça passe sur deux lignes sur petit écran */
+    gap: 15px;
     justify-content: center;
-    z-index: 2000;
-    padding: 20px;
-}
-
-.modal-content {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
     width: 100%;
-    max-width: 480px;
-    border-radius: 20px;
-    padding: 32px;
-    box-shadow: var(--shadow);
 }
 
-.modal-content h3 {
-    margin-bottom: 1.5rem;
+.btn-main {
+    background: var(--accent);
+    color: black;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 200px;
+    justify-content: center;
 }
 
-.modal-filters {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 1.5rem;
-}
-
-.modal-filters select {
-    flex: 1;
-    background: var(--bg-dark);
+.btn-main.secondary {
+    background: var(--card);
     color: white;
     border: 1px solid var(--border);
-    padding: 12px;
-    border-radius: 10px;
-    outline: none;
 }
 
-.version-item {
-    background: var(--bg-dark);
-    border: 1px solid var(--border);
-    padding: 14px 18px;
+/* Features - Grille auto-adaptative */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 40px 5%;
+}
+
+.feature-card {
+    background: var(--card);
+    padding: 25px;
     border-radius: 12px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    border: 1px solid var(--border);
+    text-align: left; /* Texte à gauche pour les détails */
 }
 
-/* Pied de page */
+.f-icon {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    display: block;
+}
+
+h3 { margin-bottom: 8px; color: white; }
+
+.feature-card p {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+}
+
+/* Footer */
 footer {
-    text-align: center;
-    padding: 60px 20px;
+    padding: 40px;
     border-top: 1px solid var(--border);
     color: var(--text-dim);
-    font-size: 0.9rem;
-}
-
-/* Utilitaires */
-.hidden { display: none !important; }
-
-/* Mobile Adaptations */
-@media (max-width: 768px) {
-    .card-actions {
-        grid-template-columns: 1fr 1fr;
-    }
-    .hero h1 { font-size: 2.2rem; }
-    nav ul { display: none; } /* On pourrait ajouter un menu burger plus tard */
+    font-size: 0.8rem;
 }
