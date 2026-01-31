@@ -2,10 +2,13 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tools MC | Accueil</title>
     <link rel="stylesheet" href="/mctools/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
+
     <nav>
         <a href="/mctools/" class="logo">Tools <span>MC</span></a>
         <ul>
@@ -15,16 +18,46 @@
     </nav>
 
     <header class="hero">
-        <h1>L'Arsenal <span class="highlight">Minecraft</span></h1>
-        <p>Gestionnaire de ressources pour serveurs et clients.</p>
-        <div style="margin-top:30px">
-            <a href="/mctools/mods" class="btn-link">Explorer les Mods</a>
-            <a href="/mctools/plugins" class="btn-link secondary">Explorer les Plugins</a>
+        <div class="hero-content">
+            <span class="badge">V2.0 Arsenal Complet</span>
+            <h1>L'Arsenal du Serveur <span class="highlight">Minecraft</span></h1>
+            <p>
+                Optimisez votre expérience avec notre suite d'outils. 
+                Recherche instantanée via <strong>Modrinth</strong> et <strong>Hangar</strong>.
+            </p>
+            
+            <div class="hero-cta">
+                <a href="/mctools/mods" class="btn-main">
+                    <span class="icon">📦</span> Explorer les Mods
+                </a>
+                <a href="/mctools/plugins" class="btn-main secondary">
+                    <span class="icon">🔌</span> Explorer les Plugins
+                </a>
+            </div>
         </div>
     </header>
 
+    <section class="features">
+        <div class="feature-card">
+            <div class="f-icon">🚀</div>
+            <h3>Vitesse CDN</h3>
+            <p>Téléchargements directs depuis les serveurs officiels sans publicité.</p>
+        </div>
+        <div class="feature-card">
+            <div class="f-icon">🆔</div>
+            <h3>Copie d'ID</h3>
+            <p>Récupérez les identifiants en un clic pour vos fichiers de configuration.</p>
+        </div>
+        <div class="feature-card">
+            <div class="f-icon">⚙️</div>
+            <h3>Multi-Versions</h3>
+            <p>Choisissez précisément votre version de Minecraft et votre Loader.</p>
+        </div>
+    </section>
+
     <footer>
-        <p>Powered by Modrinth & Hangar APIs</p>
+        <p>Projet hébergé sur <strong>LouisOff84</strong>. Données fournies par Modrinth et Hangar.</p>
     </footer>
+
 </body>
 </html>
