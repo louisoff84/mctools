@@ -1,3 +1,4 @@
+/* --- VARIABLES DE THÈME (Gérées par le JS Admin) --- */
 :root {
     --bg: #0d1117;
     --card: #161b22;
@@ -5,8 +6,10 @@
     --text: #f0f6fc;
     --text-dim: #8b949e;
     --border: #30363d;
+    --shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
 
+/* --- RESET & BASE --- */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -14,28 +17,50 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', -apple-system, sans-serif;
     background-color: var(--bg);
     color: var(--text);
-    line-height: 1.5;
-    text-align: center; /* Centrage global par défaut */
+    line-height: 1.6;
+    transition: background 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
 }
 
-/* Navbar */
+/* --- BARRE DE CHARGEMENT GITHUB --- */
+#progress-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    z-index: 10000;
+}
+
+#progress-bar {
+    width: 0%;
+    height: 100%;
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+    transition: width 0.4s ease;
+}
+
+/* --- NAVIGATION --- */
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 5%;
-    border-bottom: 1px solid var(--border);
+    padding: 1rem 5%;
     background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 1.4rem;
+    font-weight: 800;
     text-decoration: none;
-    color: white;
+    color: #fff;
 }
 
 .logo span { color: var(--accent); }
@@ -43,48 +68,43 @@ nav {
 nav ul {
     display: flex;
     list-style: none;
-    gap: 15px;
+    gap: 20px;
 }
 
 nav a {
-    color: var(--text);
+    color: var(--text-dim);
     text-decoration: none;
     font-size: 0.9rem;
+    font-weight: 500;
 }
 
-/* Hero Section - C'est ici que ça buggait */
+/* --- SECTION HERO --- */
 .hero {
-    padding: 60px 20px;
+    padding: 80px 20px;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Force le centrage des éléments flex */
-}
-
-.badge {
-    display: inline-block;
-    color: var(--text-dim);
-    font-size: 0.8rem;
-    margin-bottom: 10px;
+    align-items: center;
+    text-align: center;
 }
 
 h1 {
-    font-size: 2.2rem;
-    margin: 10px 0 20px;
-    line-height: 1.2;
+    font-size: clamp(2rem, 8vw, 3.5rem);
+    font-weight: 900;
+    margin-bottom: 20px;
+    line-height: 1.1;
 }
 
 .highlight { color: var(--accent); }
 
 .hero p {
     color: var(--text-dim);
-    max-width: 500px;
-    margin: 0 auto 30px;
+    max-width: 600px;
+    margin-bottom: 40px;
 }
 
-/* Correction des boutons (Hero CTA) */
+/* --- BOUTONS (CTA) --- */
 .hero-cta {
     display: flex;
-    flex-wrap: wrap; /* Pour que ça passe sur deux lignes sur petit écran */
     gap: 15px;
     justify-content: center;
     width: 100%;
@@ -92,57 +112,77 @@ h1 {
 
 .btn-main {
     background: var(--accent);
-    color: black;
+    color: #000;
+    padding: 14px 28px;
+    border-radius: 12px;
     text-decoration: none;
-    padding: 12px 25px;
-    border-radius: 8px;
     font-weight: bold;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    min-width: 200px;
     justify-content: center;
+    transition: 0.3s transform;
+    min-width: 180px;
 }
 
 .btn-main.secondary {
     background: var(--card);
-    color: white;
+    color: var(--text);
     border: 1px solid var(--border);
 }
 
-/* Features - Grille auto-adaptative */
-.features {
+.btn-main:hover { transform: translateY(-3px); }
+
+/* --- GRILLE & CARTES (MODS/PLUGINS) --- */
+.grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
     padding: 40px 5%;
 }
 
-.feature-card {
+.card {
     background: var(--card);
-    padding: 25px;
-    border-radius: 12px;
     border: 1px solid var(--border);
-    text-align: left; /* Texte à gauche pour les détails */
+    padding: 25px;
+    border-radius: 16px;
+    text-align: left;
+    transition: 0.3s;
 }
 
-.f-icon {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    display: block;
+.card:hover { border-color: var(--accent); box-shadow: var(--shadow); }
+
+/* --- PAGE ADMIN --- */
+.admin-grid {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 30px;
+    padding: 40px 5%;
 }
 
-h3 { margin-bottom: 8px; color: white; }
-
-.feature-card p {
-    color: var(--text-dim);
-    font-size: 0.9rem;
+.theme-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 15px;
 }
 
-/* Footer */
-footer {
-    padding: 40px;
-    border-top: 1px solid var(--border);
-    color: var(--text-dim);
-    font-size: 0.8rem;
+/* --- SUPPORT MOBILE (RESPONSIVE) --- */
+@media (max-width: 768px) {
+    nav ul { display: none; } /* Cache le menu sur tel */
+    
+    .hero-cta {
+        flex-direction: column;
+        padding: 0 20px;
+    }
+    
+    .btn-main { width: 100%; }
+    
+    .admin-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
 }
+
+.hidden { display: none !important; }
