@@ -3,34 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Tools MC | Mods</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/mctools/style.css">
 </head>
 <body>
     <nav>
-        <a href="/" class="logo">Tools <span>MC</span></a>
+        <a href="/mctools/" class="logo">Tools <span>MC</span></a>
         <ul>
-            <li><a href="/mods">Mods</a></li>
-            <li><a href="/plugins">Plugins</a></li>
+            <li><a href="/mctools/mods">Mods</a></li>
+            <li><a href="/mctools/plugins">Plugins</a></li>
         </ul>
     </nav>
 
     <header class="hero">
-        <h1>Catalogue de <span class="highlight">Mods</span></h1>
-        <p>Trouvez les meilleurs mods via l'API Modrinth.</p>
-    </header>
-
-    <div class="search-area">
+        <h1>Rechercher des <span class="highlight">Mods</span></h1>
         <div class="search-box">
             <input type="text" id="search-input" placeholder="Sodium, Iris, Lithium...">
-            <button onclick="searchAPI('mod')" class="btn-search">Chercher</button>
+            <button id="search-btn" class="btn-search">Chercher</button>
         </div>
-    </div>
+    </header>
 
     <div id="results-container" class="grid"></div>
 
-    <footer>
-        Powered by <a href="https://modrinth.com" target="_blank">Modrinth</a>
-    </footer>
-    <script src="script.js"></script>
+    <div id="dl-modal" class="modal hidden">
+        <div class="modal-content">
+            <h3 id="modal-title">Choisir la version</h3>
+            <div class="modal-filters">
+                <select id="f-mc"><option value="">Minecraft Version</option><option value="1.21">1.21</option><option value="1.20.1">1.20.1</option></select>
+                <select id="f-loader"><option value="">Loader</option><option value="fabric">Fabric</option><option value="forge">Forge</option></select>
+            </div>
+            <div id="v-list"></div>
+            <button id="close-modal" class="btn-action" style="width:100%; margin-top:10px;">Fermer</button>
+        </div>
+    </div>
+
+    <script src="/mctools/mods.js"></script>
 </body>
 </html>
