@@ -2,59 +2,38 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tools MC | L'Arsenal Minecraft</title>
+    <title>Tools MC | Accueil</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <nav>
-        <div class="logo">Tools <span>MC</span></div>
-        <div class="nav-actions">
-            <button onclick="toggleFavorites()" class="btn-fav-toggle">
-                ⭐ Favoris (<span id="fav-count">0</span>)
-            </button>
-        </div>
+        <a href="/" class="logo">Tools <span>MC</span></a>
+        <ul>
+            <li><a href="/mods">Mods</a></li>
+            <li><a href="/plugins">Plugins</a></li>
+        </ul>
     </nav>
 
     <header class="hero">
-        <h1>Optimisez votre serveur <span class="highlight">Minecraft</span></h1>
-        <p>Recherchez, sauvegardez et gérez vos ressources parmi les sources les plus fiables.</p>
-        <div class="hero-badges">
-            <span>🛡️ Sécurisé</span>
-            <span>🚀 Rapide</span>
-            <span>💎 Sans pubs</span>
+        <h1>L'Arsenal du Serveur <span class="highlight">Minecraft</span></h1>
+        <p>Tout pour créer, gérer et optimiser vos ressources en un clic.</p>
+        <div style="margin-top: 30px;">
+            <a href="/mods" class="btn-search" style="text-decoration:none; margin:10px;">Explorer les Mods</a>
+            <a href="/plugins" class="btn-search" style="text-decoration:none; margin:10px; background:#30363d; color:white;">Explorer les Plugins</a>
         </div>
     </header>
 
-    <main>
-        <section id="favorites-section" class="hidden">
-            <div class="section-header">
-                <h2>Mes Favoris</h2>
-                <button onclick="toggleFavorites()" class="btn-close">Masquer</button>
-            </div>
-            <div id="favorites-container" class="grid"></div>
-        </section>
-
-        <section class="search-area">
-            <div class="search-box">
-                <select id="platform-select">
-                    <option value="modrinth">Modrinth</option>
-                    <option value="hangar">Hangar (Paper)</option>
-                </select>
-                <input type="text" id="search-input" placeholder="Sodium, Essentials, WorldEdit...">
-                <button onclick="unifiedSearch()" class="btn-search">Chercher</button>
-            </div>
-        </section>
-
-        <section id="results-area">
-            <div id="results-container" class="grid"></div>
-        </section>
-    </main>
+    <section style="padding: 40px 8%; text-align:center;">
+        <h2>Pourquoi Tools MC ?</h2>
+        <div class="grid">
+            <div class="card"><h3>🚀 Rapidité</h3><p>Accès direct aux données Modrinth sans pubs.</p></div>
+            <div class="card"><h3>🆔 Utilité</h3><p>Copiez les IDs de projets pour vos scripts CLI.</p></div>
+            <div class="card"><h3>⭐ Favoris</h3><p>Gardez vos outils indispensables sous la main.</p></div>
+        </div>
+    </section>
 
     <footer>
-        <p>Powered by <a href="https://modrinth.com" target="_blank">Modrinth</a> & <a href="https://hangar.papermc.io" target="_blank">Hangar</a></p>
+        Powered by <a href="https://modrinth.com" target="_blank">Modrinth</a>
     </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
